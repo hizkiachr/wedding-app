@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Atria",
+    "author": "Gading Serpong",
+    "address": "Jalan A",
+    "hero": "atria_catalog.jpg"
+  },
+  {
+    "title": "Aviary",
+    "author": "Bintaro",
+    "address": "Jalan B",
+    "hero": "aviary_catalog.jpg"
+  },
+  {
+    "title": "Grand Zuri",
+    "author": "BSD",
+    "address": "Jalan C",
+    "hero": "grandzuri_catalog.jpg"
+  },
+  {
+    "title": "JHL Solitaire",
+    "author": "Gading Serpong",
+    "address": "Jalan D",
+    "hero": "jhlsolitaire_catalog.jpg"
+  },
+  {
+    "title": "Mercure",
+    "author": "BSD",
+    "address": "Jalan E",
+    "hero": "mercurebsd_catalog.jpg"
+  },
+  {
+    "title": "Santika",
+    "author": "Bintaro",
+    "address": "Jalan F",
+    "hero": "santika_catalog.jpg"
+  }
+]
