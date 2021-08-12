@@ -8,16 +8,32 @@
         Back
       </v-btn>
     </section>
-    <articles />
+
+    <articles :venue-list="ahpRoomSpaceList" />
   </div>
 </template>
 
 <script>
+  import { mapState, mapActions } from 'vuex'
   export default {
     name: 'RoomSpace',
 
     components: {
       Articles: () => import('@/components/home/Articles'),
+    },
+    computed: {
+      ...mapState('ahp', ['ahpRoomSpaceList']),
+    },
+    mounted () {
+      this.fetchData()
+    },
+    methods: {
+      ...mapActions('venue', ['fetchVenueList']),
+      ...mapActions('ahp', ['calculateAhpRoomSpaceList']),
+      async fetchData () {
+        await this.fetchVenueList()
+        await this.calculateAhpRoomSpaceList()
+      },
     },
   }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div id="capacity">
+  <div id="indoor">
     <section class="col-md-4 col-12">
       <v-btn
         class="black--text"
@@ -8,30 +8,28 @@
         Back
       </v-btn>
     </section>
-    <articles :venue-list="ahpCapacityList" />
+    <articles :venue-list="venueList" />
   </div>
 </template>
 
 <script>
-  import { mapState, mapActions } from 'vuex'
+  import { mapActions, mapState } from 'vuex'
   export default {
-    name: 'Facilty',
+    name: 'Indoor',
 
     components: {
       Articles: () => import('@/components/home/Articles'),
     },
     computed: {
-      ...mapState('ahp', ['ahpCapacityList']),
+      ...mapState('venue', ['venueList']),
     },
     mounted () {
       this.fetchData()
     },
     methods: {
       ...mapActions('venue', ['fetchVenueList']),
-      ...mapActions('ahp', ['calculateAhpCapacityList']),
       async fetchData () {
-        await this.fetchVenueList()
-        await this.calculateAhpCapacityList()
+        this.fetchVenueList({ kind: 2 })
       },
     },
   }

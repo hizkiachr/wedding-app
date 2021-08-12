@@ -1,9 +1,11 @@
 <template>
   <div id="contact">
     <core-app-bar />
+
     <base-card dark>
       <v-img
-        :src="require('@/assets/articles/contactheader.jpeg')"
+        v-if="contacts[0].header_contact != null"
+        :src="contacts[0].header_contact"
         class="grey lighten-2"
         height="400"
         width="100%"
@@ -60,9 +62,12 @@
             </v-col>
             <v-col cols="4">
               <v-card elevation="1">
-                <v-card-title>
-                  Contact Us
+                <v-card-title v-if="contacts.length > 0">
+                  {{ contacts[0].title_contact }}
                 </v-card-title>
+                <!-- <v-card-title>
+                  Contact Us
+                </v-card-title> -->
                 <v-card-text>
                   <div>
                     <h3>
@@ -125,10 +130,28 @@
   </div>
 </template>
 <script>
+  import axios from 'axios'
+
   export default {
     name: 'Contact',
     components: {
       CoreAppBar: () => import('@/components/core/AppBar'),
+    },
+    data () {
+      return {
+        contacts: [],
+      }
+    },
+    mounted () {
+      this.onFetchData()
+    },
+    methods: {
+      async onFetchData () {
+        const contacts = await axios.get(
+          'http://127.0.0.1:8000/api/contact',
+        )
+        this.contacts = contacts.data.data
+      },
     },
   }
 </script>

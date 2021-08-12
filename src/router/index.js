@@ -24,8 +24,8 @@ export default new Router({
       component: () => import(/* webpackChunkName: "contact" */ '../views/Contact.vue'),
     },
     {
-      path: '/venuedetail/:id',
-      name: 'venuedetails',
+      path: '/venue/:id',
+      name: 'VenueDetail',
       component: () => import(/* webpackChunkName: "contact" */ '../views/Venuedetails'),
     },
     {
@@ -47,6 +47,21 @@ export default new Router({
       path: '/roomspace',
       name: 'roomspacepage',
       component: () => import(/* webpackChunkName: "contact" */ '../views/RoomSpacePage'),
+    },
+    {
+      path: '/indoor',
+      name: 'indoorpage',
+      component: () => import(/* webpackChunkName: "contact" */ '../views/IndoorPage'),
+    },
+    {
+      path: '/outdoor',
+      name: 'outdoorpage',
+      component: () => import(/* webpackChunkName: "contact" */ '../views/OutdoorPage'),
+    },
+    {
+      path: '/decoration',
+      name: 'decorationpage',
+      component: () => import(/* webpackChunkName: "contact" */ '../views/DecorationPage'),
     },
   ],
 })

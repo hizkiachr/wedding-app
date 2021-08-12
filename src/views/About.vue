@@ -3,7 +3,8 @@
     <core-app-bar />
     <base-card dark>
       <v-img
-        :src="require('@/assets/articles/aboutheader.jpeg')"
+        v-if="abouts[0].header_about != null"
+        :src="abouts[0].header_about"
         class="grey lighten-2"
         height="400"
         width="100%"
@@ -59,10 +60,28 @@
   </div>
 </template>
 <script>
+  import axios from 'axios'
+
   export default {
     name: 'About',
     components: {
       CoreAppBar: () => import('@/components/core/AppBar'),
+    },
+    data () {
+      return {
+        abouts: [],
+      }
+    },
+    mounted () {
+      this.onFetchData()
+    },
+    methods: {
+      async onFetchData () {
+        const abouts = await axios.get(
+          'http://127.0.0.1:8000/api/about',
+        )
+        this.abouts = abouts.data.data
+      },
     },
   }
 </script>

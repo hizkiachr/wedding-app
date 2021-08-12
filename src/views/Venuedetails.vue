@@ -3,40 +3,54 @@
     <section class="col-md-4 col-12">
       <v-btn
         class="black--text"
-        :to="{name:'home'}"
+        @click="$router.go(-1)"
       >
         Back
       </v-btn>
     </section>
-    <v-img
-      :src="require('@/assets/articles/atria_01.jpg')"
-      class="grey lighten-2"
-      height="400"
-      width="100%"
+
+    <v-carousel
+      v-if="venueDetail.venue_banners"
+      v-model="model"
     >
-      <v-row
-        class="fill-height pa-3"
-        align="center"
+      <v-carousel-item
+        v-for="(banner, i) in venueDetail.venue_banners"
+        :key="i"
       >
-        <v-col
-          cols="12"
-          md="7"
-          offset-md="5"
+        <v-img
+          :src="banner.venue_image"
+          height="100%"
         />
-      </v-row>
-    </v-img>
+        <!--
+          <v-sheet
+          :color="color"
+          height="110%"
+          tile
+        >
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+            <div class="text-h2">
+              Slide {{ i + 1 }}
+            </div>
+          </v-row>
+          </v-sheet> -->
+      </v-carousel-item>
+    </v-carousel>
     <section class="px-5 py-3">
       <v-card>
         <v-card-title>
           <h1 class="text-h4 font-weight-bold">
-            Atria Gading Serpong
+            {{ venueDetail.venue_name }}
           </h1>
         </v-card-title>
         <v-card-text>
           <v-row>
             <v-col cols="8">
-              <h2>Jalan. Gading Serpong Boulevard Gg. Kavling 2,</h2>
-              <h2>Pakulonan Bar., Kec. Klp. Dua, Tangerang, Banten 15810</h2>
+              <h2>{{ venueDetail.venue_address1 }}</h2>
+              <h2>{{ venueDetail.venue_address2 }}</h2>
             </v-col>
             <v-col
               lg="8"
@@ -45,21 +59,18 @@
               <h2>About Place</h2>
               <br>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut tortor tellus. Donec maximus curs us pulvinar.
-                Proin vehicula eros mauris, sit amet rutrum libero vestibulum ac. Morbi ullamcorper eu lacus vulputate consect.
-                Etur vivamus sagittis accumsan quam eu malesuada. Proin et ante vel libero ultrices cursus. Donec felis leo, cu
-                rsus eget hendrerit at, congue nec enim.
+                {{ venueDetail.venue_description }}
               </p>
             </v-col>
             <v-col cols="8">
-              <h2>Price : Rp. 123.456.789</h2>
+              <h2>Price : Rp.{{ venueDetail.venue_price }}</h2>
               <br>
-              <h2>Capacity : 50 pax</h2>
+              <h2>Capacity : {{ venueDetail.venue_capacity }} pax</h2>
               <br>
               <h2>Facilities : </h2>
               <br>
-              <p>Free Catering, Free Parking, Free Stand</p>
-              <h2>240m x 160m</h2>
+              <p>{{ venueDetail.venue_facility_list }}</p>
+              <h2>{{ venueDetail.venue_roomspace }}m</h2>
             </v-col>
             <v-col cols="4">
               <v-card elevation="1">
@@ -72,7 +83,7 @@
                       Phone Number
                     </h3>
                     <div>
-                      081322233078
+                      {{ venueDetail.venue_contact }}
                     </div>
                   </div>
                   <div>
@@ -80,7 +91,7 @@
                       Website
                     </h3>
                     <div>
-                      <a href="https://www.instagram.com/atriaserpong/">Atria</a>
+                      <a :href="venueDetail.venue_website">Website</a>
                     </div>
                   </div>
                 </v-card-text>
@@ -97,7 +108,7 @@
                   <v-btn
                     color="#833AB4"
                     class="white--text"
-                    href="https://www.instagram.com/atriaserpong/"
+                    :href="venueDetail.venue_socmed1"
                   >
                     Instagram
                     <v-icon>
@@ -109,7 +120,7 @@
                   <v-btn
                     color="#1DA1F2"
                     class="white--text"
-                    href="https://twitter.com/AtriaHtlSerpong"
+                    :href="venueDetail.venue_socmed3"
                   >
                     Twitter
                     <v-icon>
@@ -117,7 +128,7 @@
                     </v-icon>
                   </v-btn>
                   <v-btn
-                    href="https://www.facebook.com/AtriaGadingSerpong/"
+                    :href="venueDetail.venue_socmed2"
                     color="#4267B2"
                     class="white--text"
                   >
@@ -136,10 +147,34 @@
   </base-card>
 </template>
 <script>
+  import { mapActions, mapState } from 'vuex'
   export default {
     name: 'VenueDetails',
     components: {
 
+    },
+    data: () => ({
+      model: 0,
+      colors: [
+        'primary',
+        'secondary',
+        'yellow darken-2',
+        'red',
+        'orange',
+      ],
+    }),
+    computed: {
+      ...mapState('venue', ['venueDetail']),
+    },
+    mounted () {
+      this.getVenueDetail()
+    },
+    methods: {
+      ...mapActions('venue', ['fetchVenueDetail']),
+      getVenueDetail () {
+        const id = this.$route.params.id
+        this.fetchVenueDetail({ id: id })
+      },
     },
   }
 </script>

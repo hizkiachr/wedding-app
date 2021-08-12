@@ -4,6 +4,9 @@ import './plugins/base'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import VueCarousel from 'vue-carousel'
+
+Vue.use(VueCarousel)
 
 Vue.config.productionTip = false
 

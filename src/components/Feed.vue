@@ -26,12 +26,12 @@
         </base-btn>
       </v-col>
 
-      <v-col
+      <!-- <v-col
         class="text-center subheading"
         cols="6"
       >
         PAGE {{ page }} OF {{ pages }}
-      </v-col>
+      </v-col> -->
 
       <v-col
         class="text-right"

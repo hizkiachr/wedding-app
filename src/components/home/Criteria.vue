@@ -16,6 +16,7 @@
         />
       </v-col>
     </v-row>
+    <h1>Rekomendasi</h1>
   </v-container>
 </template>
 <script>
@@ -33,6 +34,15 @@
       }, {
         name: 'Room Space',
         link: '/roomspace',
+      }, {
+        name: 'Indoor',
+        link: '/indoor',
+      }, {
+        name: 'Outdoor',
+        link: '/outdoor',
+      }, {
+        name: 'Decoration',
+        link: '/decoration',
       }],
     }),
     methods: {

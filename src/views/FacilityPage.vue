@@ -8,16 +8,31 @@
         Back
       </v-btn>
     </section>
-    <articles />
+    <articles :venue-list="ahpFacilityList" />
   </div>
 </template>
 
 <script>
+  import { mapState, mapActions } from 'vuex'
   export default {
-    name: 'Facility',
+    name: 'Facilty',
 
     components: {
       Articles: () => import('@/components/home/Articles'),
+    },
+    computed: {
+      ...mapState('ahp', ['ahpFacilityList']),
+    },
+    mounted () {
+      this.fetchData()
+    },
+    methods: {
+      ...mapActions('venue', ['fetchVenueList']),
+      ...mapActions('ahp', ['calculateAhpFacilityList']),
+      async fetchData () {
+        await this.fetchVenueList()
+        await this.calculateAhpFacilityList()
+      },
     },
   }
 </script>
