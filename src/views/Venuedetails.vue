@@ -63,7 +63,7 @@
               </p>
             </v-col>
             <v-col cols="8">
-              <h2>Price : Rp.{{ venueDetail.venue_price }}</h2>
+              <h2>Price : Rp. {{ venueDetail.venue_price }}</h2>
               <br>
               <h2>Capacity : {{ venueDetail.venue_capacity }} pax</h2>
               <br>

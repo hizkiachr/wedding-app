@@ -1,5 +1,6 @@
 <template>
   <v-app-bar
+    color="pink accent-1"
     app
     flat
   >
@@ -24,7 +25,7 @@
           v-for="(link, i) in links"
           :key="i"
           v-bind="link"
-          class="hidden-sm-and-down"
+          class="hidden-sm-and-down white--text"
           text
           @click="onClick($event, link)"
         >
