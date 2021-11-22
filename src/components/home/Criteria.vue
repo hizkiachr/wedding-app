@@ -16,7 +16,9 @@
         />
       </v-col>
     </v-row>
-    <h1>Rekomendasi</h1>
+    <h1 class="black--text">
+      Rekomendasi
+    </h1>
   </v-container>
 </template>
 <script>

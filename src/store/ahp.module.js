@@ -70,7 +70,7 @@ const venue = {
         // return venueDetail
       })
 
-      const sortVenueScore = venueRankedMap.sort((a, b) => b.score - a.score)
+      const sortVenueScore = venueRankedMap.sort((a, b) => a.score - b.score)
 
       context.commit('setAHPPriceList', sortVenueScore)
 
@@ -249,7 +249,7 @@ const venue = {
       })
 
       const mapVenuePrice = venueList.map((value) => {
-        return value.venue_price
+        return value.venue_priice
       })
 
       const mapVenueFacility = venueList.map((value) => {

@@ -1,12 +1,17 @@
 <template>
   <div id="home">
     <core-app-bar />
-    <articles :venue-list="ahpResult">
-      <banner />
-      <criteria />
+    <v-parallax
+      dark
+      :src="require('@/assets/articles/b.jpeg')"
+      height="auto"
+    >
+      <articles :venue-list="ahpResult">
+        <banner />
+        <criteria />
       <!-- <carousel /> -->
-    </articles>
-
+      </articles>
+    </v-parallax>
     <!-- <about />
 
     <subscribe />

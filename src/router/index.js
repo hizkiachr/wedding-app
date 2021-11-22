@@ -24,6 +24,11 @@ export default new Router({
       component: () => import(/* webpackChunkName: "contact" */ '../views/Contact.vue'),
     },
     {
+      path: '/formvenue',
+      name: 'formvenue',
+      component: () => import(/* webpackChunkName: "contact" */ '../views/FormVenue.vue'),
+    },
+    {
       path: '/venue/:id',
       name: 'VenueDetail',
       component: () => import(/* webpackChunkName: "contact" */ '../views/Venuedetails'),

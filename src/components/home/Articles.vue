@@ -107,17 +107,17 @@
       },
     },
     data: () => ({
-      layout: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
+      layout: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
       page: 1,
     }),
     computed: {
 
       pages () {
-        return Math.ceil(this.venueList.length / 11)
+        return Math.ceil(this.venueList.length / 12)
       },
       paginatedArticles () {
-        const start = (this.page - 1) * 11
-        const stop = this.page * 11
+        const start = (this.page - 1) * 12
+        const stop = this.page * 12
 
         return this.venueList.slice(start, stop)
       },

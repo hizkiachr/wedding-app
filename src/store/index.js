@@ -22,6 +22,10 @@ export default new Vuex.Store({
         text: 'Contact',
         to: '/contact',
       },
+      {
+        text: 'Add Venue',
+        to: '/formvenue',
+      },
     ],
   },
   getters: {
